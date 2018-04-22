@@ -27,3 +27,20 @@ class nonuniform(object):
         
     def _delta(self, t, x):
         return x*(1-np.random.rand()**((1-t/self._T)**self._b))
+
+def mutGaussian(individual, mu, sigma, prob_atrib_mut):
+
+    assert 0.0 <= prob_atrib_mut <= 1.0
+    size = len(individual)
+    def aux():
+        for i in range(size):
+            if np.random.uniform() < prob_atrib_mut:
+                attr = individual[i] + np.random.gauss(m, s)
+            else:
+                attr = individual[i]
+
+            yield attr
+
+    individual = np.fromiter(aux(), float, count=size)
+
+    return individual

@@ -3,7 +3,7 @@
 import numpy as np
 import pdb
 
-def tournamentSelection(fit, k=3):
+def tournamentSelection(fit, k=6):
     sizeOfPopulation = len(fit)
     fatherSet = np.random.randint(low=0, high=sizeOfPopulation, size=k)
     set = [fit[i] for i in fatherSet]
